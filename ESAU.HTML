@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Esaú | Desarrollo Web</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* Variables y Estilos Generales */
+        :root {
+            --color-principal: #3498db;
+            /* Azul */
+            --color-secundario: #2c3e50;
+            /* Azul Oscuro */
+            --color-fondo: #f4f4f4;
+            --color-texto: #333;
+            --color-claro: #ffffff;
+            --fuente-titulo: 'Roboto', sans-serif;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Cabecera y Navegación */
+        header {
+            background-color: var(--color-secundario);
+            color: var(--color-claro);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            font-family: var(--fuente-titulo);
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        header nav ul li a {
+            color: var(--color-claro);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+            font-weight: bold;
+        }
+
+        header nav ul li a:hover {
+            color: var(--color-principal);
+        }
+
+        /* Estilos de las Secciones */
+        section {
+            padding: 5rem 10%;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--color-secundario);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--color-principal);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Sección HERO (Inicio) */
+        #inicio {
+            background-color: var(--color-claro);
+            padding: 8rem 10%;
+            text-align: center;
+        }
+
+        #inicio h2 {
+            color: var(--color-principal);
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        #inicio p {
+            font-size: 1.3rem;
+            color: #666;
+        }
+
+        .cta-button {
+            background-color: var(--color-principal);
+            color: var(--color-claro);
+            border: none;
+            padding: 0.8rem 2rem;
+            margin-top: 2rem;
+            cursor: pointer;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s, transform 0.2s;
+            text-decoration: none;
+            /* Si se usa en un <a> */
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        /* Sección Habilidades */
+        #habilidades {
+            background-color: var(--color-fondo);
+        }
+
+        .habilidades-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .habilidad-item {
+            background-color: var(--color-claro);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            width: 200px;
+            transition: transform 0.3s;
+        }
+
+        .habilidad-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .habilidad-item i {
+            font-size: 3rem;
+            color: var(--color-principal);
+            margin-bottom: 10px;
+        }
+
+        /* Sección Proyectos */
+        #proyectos {
+            background-color: var(--color-claro);
+        }
+
+        .contenedor-proyectos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 3rem;
+        }
+
+        .proyecto-card {
+            background-color: var(--color-fondo);
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            width: 320px;
+            text-align: left;
+        }
+
+        .proyecto-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .proyecto-card h3 {
+            color: var(--color-secundario);
+            margin-top: 0;
+        }
+
+        .proyecto-card a {
+            color: var(--color-principal);
+            font-weight: bold;
+            text-decoration: none;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+
+        .proyecto-card a:hover {
+            color: #2980b9;
+        }
+
+        /* Pie de Página */
+        footer {
+            background-color: var(--color-secundario);
+            color: var(--color-claro);
+            text-align: center;
+            padding: 2rem 10%;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--color-principal);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* Media Queries para Responsividad */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+            }
+
+            header nav ul {
+                margin-top: 1rem;
+            }
+
+            header nav ul li a {
+                margin: 0 0.5rem;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+
+            .habilidades-grid,
+            .contenedor-proyectos {
+                gap: 20px;
+            }
+
+            .proyecto-card,
+            .habilidad-item {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Esaú 🚀</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="mailto:tuemail@ejemplo.com">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio">
+            <h2>¡Hola! Soy Esaú.</h2>
+            <p>**Desarrollador Web Front-End** apasionado por construir interfaces limpias y funcionales.</p>
+            <p>Conocimientos sólidos en HTML, CSS y JavaScript para dar vida a tus ideas.</p>
+            <a href="#proyectos" class="cta-button">Ver Mis Trabajos</a>
+        </section>
+
+        <section id="habilidades">
+            <h2>Mis Habilidades Técnicas</h2>
+            <div class="habilidades-grid">
+
+                <article class="habilidad-item">
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML5</h3>
+                    <p>Estructura semántica del contenido.</p>
+                </article>
+
+                <article class="habilidad-item">
+                    <i class="fab fa-css3-alt"></i>
+                    <h3>CSS3</h3>
+                    <p>Diseño responsivo, Flexbox y Grid.</p>
+                </article>
+
+                <article class="habilidad-item">
+                    <i class="fab fa-js-square"></i>
+                    <h3>JavaScript</h3>
+                    <p>Interactividad y manipulación del DOM.</p>
+                </article>
+
+                <article class="habilidad-item">
+                    <i class="fab fa-git-alt"></i>
+                    <h3>Git & GitHub</h3>
+                    <p>Control de versiones y colaboración.</p>
+                </article>
+
+            </div>
+        </section>
+
+        <section id="proyectos">
+            <h2>Proyectos Destacados</h2>
+            <div class="contenedor-proyectos">
+
+                <article class="proyecto-card">
+                    <img src="https://via.placeholder.com/320x180?text=Proyecto+1" alt="Captura del Proyecto 1">
+                    <h3>Landing Page Moderna</h3>
+                    <p>Diseño de una landing page minimalista con animaciones CSS. Enfocado en la optimización.</p>
+                    <a href="#" target="_blank">Código <i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank">Demo <i class="fas fa-external-link-alt"></i></a>
+                </article>
+
+                <article class="proyecto-card">
+                    <img src="https://via.placeholder.com/320x180?text=Proyecto+2" alt="Captura del Proyecto 2">
+                    <h3>App de Tareas (JS)</h3>
+                    <p>Aplicación CRUD (Crear, Leer, Actualizar, Borrar) construida puramente con JavaScript.</p>
+                    <a href="#" target="_blank">Código <i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank">Demo <i class="fas fa-external-link-alt"></i></a>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Conéctate conmigo:</p>
+        <a href="mailto:tuemail@ejemplo.com" target="_blank"><i class="fas fa-envelope"></i> Email</a>
+        <a href="URL_DE_TU_LINKEDIN" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="URL_DE_TU_GITHUB" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <p>&copy; 2025 Esaú. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Función para el desplazamiento suave de la navegación
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mensaje de consola para verificar que JS está funcionando
+        console.log("¡Portafolio de Esaú cargado y listo!");
+
+    </script>
+</body>
+
+</html>
